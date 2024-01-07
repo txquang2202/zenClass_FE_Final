@@ -1,0 +1,62 @@
+{
+  "Get started": "Bắt đầu",
+
+  "Create Class": "Tạo lớp",
+  "Create New Class": "Tạo lớp",
+  "Title": "Tiêu đề",
+  "Class Name": "Tên lớp",
+  "Cancel": "Hủy",
+
+  "Join Class": "Tham gia lớp",
+  "Join a Class": "Tham gia lớp",
+  "Class Code": "Mã lớp",
+
+  "Main Page": "Trang chủ",
+  "Classes": "Lớp học",
+  "Courses": "Khóa học",
+  "My Classes": "Lớp học",
+  "My Courses": "Khóa học",
+
+  "Teacher": "Giáo viên",
+  "Class": "Lớp học",
+
+  "No class available": "Hiện tại không có lớp",
+  "No course available": "Hiện tại không có khóa học",
+  "Loading": "Đang tải",
+
+  "Notifications": "Thông báo",
+  "See all": "Xem thêm",
+  "No notifications": "Không có thông báo",
+  "Delete all": "Xóa tất cả",
+
+  "Profile": "Trang cá nhân",
+  "Logout": "Đăng xuất",
+
+  "Login": "Đăng nhập",
+  "Sign Up": "Đăng kí",
+
+  "General": "Chung",
+  "Class ID": "Mã lớp",
+  "Copy": "Sao chép",
+  "Upcoming events": "Sự kiện sắp tới",
+  "There are no upcoming events": "Không có sự kiện nào",
+  "No homework available": "Không có bài tập nào",
+  "Edit Class": "Chỉnh sửa lớp",
+  "Save": "Lưu",
+  "Delete class": "Xóa lớp",
+  "Add Homework": "Thêm bài tập",
+  "Description": "Thông tin mô tả",
+
+  "People": "Mọi người",
+  "Students": "Sinh viên",
+
+  "Grade": "Điểm",
+  "Grade Board": "Bảng điểm",
+  "Grade Structure": "Cấu trúc điểm",
+  "Grade Review": "Phúc khảo",
+
+  "Chat": "Trò chuyện",
+  "Chat Group": "Nhóm chat",
+
+  "greet": "Bonjour, {{name}} !"
+}

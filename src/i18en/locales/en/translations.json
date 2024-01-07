@@ -1,0 +1,59 @@
+{
+  "Get started": "Get started",
+
+  "Create Class": "Create Class",
+  "Create New Class": "Create New Class",
+  "Title": "Title",
+  "Class Name": "Class Name",
+  "Cancel": "Cancel",
+
+  "Join Class": "Join Class",
+  "Join a Class": "Join a Class",
+  "Class Code": "Class Code",
+
+  "Main Page": "Main Page",
+  "Classes": "Classes",
+  "Courses": "Courses",
+
+  "My Classes": "My Classes",
+  "No class available": "No class available",
+  "No course available": "No course available",
+  "Loading": "Loading",
+
+  "Notifications": "Notifications",
+  "See all": "See all",
+  "No notifications": "No notifications",
+  "Delete all": "Delete all",
+
+  "Profile": "Profile",
+  "Logout": "Logout",
+
+  "Login": "Login",
+  "Sign Up": "Sign Up",
+
+  "General": "General",
+  "Class ID": "Class ID",
+  "Copy": "Copy",
+  "Upcoming events": "Upcoming events",
+  "There are no upcoming events": "There are no upcoming events",
+  "No homework available": "No homework available",
+  "Edit Class": "Edit Class",
+  "Save": "Save",
+  "Delete class": "Delete class",
+  "Add Homework": "Add Homework",
+  "Description": "Description",
+
+  "People": "People",
+  "Teacher": "Teacher",
+  "Students": "Students",
+
+  "Grade": "Grade",
+  "Grade Board": "Grade Board",
+  "Grade Structure": "Grade Structure",
+  "Grade Review": "Grade Review",
+
+  "Chat": "Chat",
+  "Chat Group": "Chat Group",
+
+  "greet": "Hello, {{name}}!"
+}
