@@ -13,7 +13,17 @@ import { useDrag, useDrop } from "react-dnd";
 
 const TYPE = "GRADE"; // Unique type for the drag-and-drop
 
-const DraggableRow = ({ grade, index, moveRow }) => {
+const DraggableRow = ({
+  grade,
+  index,
+  moveRow,
+  handleEdit,
+  handleCancel,
+  handleSave,
+  handleTextFieldChange,
+  newGrades,
+  edit,
+}) => {
   const [, ref] = useDrag({
     type: TYPE,
     item: { index },
@@ -32,11 +42,6 @@ const DraggableRow = ({ grade, index, moveRow }) => {
   const token = localStorage.getItem("token");
   const { grades, setGrades } = useContext(GradeContext);
   const { isClassOwner, isClassOwner2 } = useClassDetailContext();
-  const [newGrades, setNewGrades] = useState({
-    topic: "",
-    ratio: 0,
-  });
-  const [edit, setEdit] = useState(null);
 
   // API delete grade
   const handleDelete = async (id) => {
@@ -54,70 +59,6 @@ const DraggableRow = ({ grade, index, moveRow }) => {
         toast.error(error.response.data.message);
       }
     }
-  };
-
-  // API edit grade
-  const handleSave = async (id) => {
-    try {
-      const formSub = {
-        topic: newGrades.topic,
-        ratio: newGrades.ratio,
-      };
-
-      await editGradeStruct(id, token, formSub);
-
-      toast.success("Grade edited successfully");
-      setEdit(null);
-
-      setGrades((prevGrades) =>
-        prevGrades.map((grade) =>
-          grade.id === id ? { ...grade, ...formSub } : grade
-        )
-      );
-      // Đặt lại state newGrades sau khi lưu thành công
-      setNewGrades({
-        topic: "",
-        ratio: 0,
-      });
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
-  };
-
-  const handleTextFieldChange = (e, field) => {
-    let value;
-
-    if (field === "ratio") {
-      // Ensure the value is a valid integer and restrict it to the range [0, 100]
-      value = Math.min(100, Math.max(0, parseInt(e.target.value, 10))) || 0;
-    } else {
-      value = e.target.value;
-    }
-
-    setNewGrades((prevGrades) => ({
-      ...prevGrades,
-      [field]: value,
-    }));
-  };
-
-  const handleEdit = (id) => {
-    setEdit(id);
-    const editingGrade = grades.find((grade) => grade.id === id);
-    setNewGrades({
-      topic: editingGrade.topic,
-      ratio: editingGrade.ratio,
-    });
-  };
-
-  const handleCancel = async (id) => {
-    try {
-      await deleteGradeStruct(id, token);
-      setGrades((prevGrades) => prevGrades.filter((grade) => grade.id !== id));
-      toast.success("Grade cancel successfully");
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
-    setEdit(null);
   };
 
   return (
@@ -208,6 +149,70 @@ const GradeStructure = () => {
   });
   const [edit, setEdit] = useState(null);
 
+  // Common logic for handling edit state
+  const handleEdit = (id) => {
+    setEdit(id);
+    const editingGrade = grades.find((grade) => grade.id === id);
+    setNewGrades({
+      topic: editingGrade.topic,
+      ratio: editingGrade.ratio,
+    });
+  };
+
+  const handleCancel = async (id) => {
+    try {
+      await deleteGradeStruct(id, token);
+      setGrades((prevGrades) => prevGrades.filter((grade) => grade.id !== id));
+      toast.success("Grade cancel successfully");
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+    setEdit(null);
+  };
+
+  const handleSave = async (id) => {
+    try {
+      const formSub = {
+        topic: newGrades.topic,
+        ratio: newGrades.ratio,
+      };
+
+      await editGradeStruct(id, token, formSub);
+
+      toast.success("Grade edited successfully");
+      setEdit(null);
+
+      setGrades((prevGrades) =>
+        prevGrades.map((grade) =>
+          grade.id === id ? { ...grade, ...formSub } : grade
+        )
+      );
+      // Đặt lại state newGrades sau khi lưu thành công
+      setNewGrades({
+        topic: "",
+        ratio: 0,
+      });
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+
+  const handleTextFieldChange = (e, field) => {
+    let value;
+
+    if (field === "ratio") {
+      // Ensure the value is a valid integer and restrict it to the range [0, 100]
+      value = Math.min(100, Math.max(0, parseInt(e.target.value, 10))) || 0;
+    } else {
+      value = e.target.value;
+    }
+
+    setNewGrades((prevGrades) => ({
+      ...prevGrades,
+      [field]: value,
+    }));
+  };
+
   // API add grade
   const handleAddGrade = async (e) => {
     e.preventDefault();
@@ -273,6 +278,8 @@ const GradeStructure = () => {
     setGrades(updatedGrades);
   };
 
+  // Rest of the code remains unchanged...
+
   return (
     <div className="p-4">
       <h1 className="text-2xl text-[#10375c] font-bold mb-4">
@@ -306,6 +313,12 @@ const GradeStructure = () => {
               grade={grade}
               index={index}
               moveRow={moveRow}
+              handleEdit={handleEdit}
+              handleCancel={handleCancel}
+              handleSave={handleSave}
+              handleTextFieldChange={handleTextFieldChange}
+              newGrades={newGrades}
+              edit={edit}
             />
           ))}
         </tbody>
