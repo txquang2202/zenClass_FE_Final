@@ -51,7 +51,7 @@ function PeoplePage() {
       const respone = await getAllUsers();
       const users = respone.data.users;
       const mappedUser = users.map((users) => ({
-        avatarSrc: "/assets/imgs/" + users.img || "",
+        avatarSrc: users.img || "",
         name: users.fullname || "",
         mail: users.email || "",
       }));
