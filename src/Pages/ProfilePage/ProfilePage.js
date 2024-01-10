@@ -95,6 +95,9 @@ function ResponsiveDrawer(props) {
       // Make a PUT request with the FormData
       const response = await updateUser(id, data, token);
       toast.success(response.data.message);
+      if (userData.role === 3) {
+        Navigate("/manageusers");
+      } else Navigate("/home");
     } catch (error) {
       console.error("Error editing profile:", error);
       toast.error(error.response.data.message);
